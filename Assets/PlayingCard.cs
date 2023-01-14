@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CardType { Diamond, Clubs, Spades, Hearts }
+public enum CardColor { Blue, Red, Green, Yellow }
+
 public class PlayingCard : MonoBehaviour {
-    public UnityEngine.U2D.Animation.SpriteResolver spriteResolver;
+    [SerializeField]
+    private UnityEngine.U2D.Animation.SpriteResolver spriteResolver;
     private bool isFlipped = false;
-    private string cardType;
+    private bool isActivated = true;
+    
+    public CardType cardType;
+    public CardColor cardColor;
 
     // Start is called before the first frame update
     void Start() {
-        cardType = spriteResolver.GetLabel();
+        spriteResolver.SetCategoryAndLabel("FrontCard", cardType.ToString());
     }
 
     // Update is called once per frame
@@ -19,15 +26,27 @@ public class PlayingCard : MonoBehaviour {
 
     void UpdateDisplay() {
         if (isFlipped) {
-            spriteResolver.SetCategoryAndLabel("BackCard", "Blue");
+            spriteResolver.SetCategoryAndLabel("BackCard", cardColor.ToString());
         }
         else {
-            spriteResolver.SetCategoryAndLabel("FrontCard", cardType);
+            spriteResolver.SetCategoryAndLabel("FrontCard", cardType.ToString());
         }
     }
 
-    private void OnMouseDown() {
+    void Flip() {
         isFlipped = !isFlipped;
         UpdateDisplay();
+    }
+
+    void Deactivate() {
+        isActivated = false;
+    }
+
+    void Activate() {
+        isActivated = true;
+    }
+    
+    void OnMouseDown() {
+        Flip();
     }
 }
