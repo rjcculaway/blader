@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: BackCard
+    m_Hash: 347836145
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Blue
+      m_Hash: 1040475530
+      m_Sprite: {fileID: 21300000, guid: 1cb3da0b8ffe05b4ba1f3c007ef2bc80, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 1cb3da0b8ffe05b4ba1f3c007ef2bc80, type: 3}
+    - m_Name: Red
+      m_Hash: 36444527
+      m_Sprite: {fileID: 21300000, guid: 224e63bf0db2d414db0045369ba3ff72, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 224e63bf0db2d414db0045369ba3ff72, type: 3}
+    - m_Name: Green
+      m_Hash: 291225893
+      m_Sprite: {fileID: 21300000, guid: 08f208faa70f7ac4aad935536e9fec10, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 08f208faa70f7ac4aad935536e9fec10, type: 3}
+    - m_Name: Yellow
+      m_Hash: 396945833
+      m_Sprite: {fileID: 21300000, guid: 12fff1cc01960ef469f45fac557f9921, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 12fff1cc01960ef469f45fac557f9921, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: FrontCard
+    m_Hash: 834929686
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Diamond
+      m_Hash: 501731024
+      m_Sprite: {fileID: 21300000, guid: 130edfb771f4e624fbf9b37f1099b4c6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 130edfb771f4e624fbf9b37f1099b4c6, type: 3}
+    - m_Name: Clubs
+      m_Hash: 612113959
+      m_Sprite: {fileID: 21300000, guid: f23e8a97b76742a4191955a276006648, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: f23e8a97b76742a4191955a276006648, type: 3}
+    - m_Name: Spades
+      m_Hash: 533231563
+      m_Sprite: {fileID: 21300000, guid: 36206baca3ff94f418a3dfea62b67cf6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 36206baca3ff94f418a3dfea62b67cf6, type: 3}
+    - m_Name: Hearts
+      m_Hash: 363553203
+      m_Sprite: {fileID: 21300000, guid: 33199c49f1bca4a428e01f7817bcb700, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 33199c49f1bca4a428e01f7817bcb700, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
