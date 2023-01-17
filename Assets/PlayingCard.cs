@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Commands;
 
 public enum CardType { Diamond, Clubs, Spades, Hearts }
 public enum CardColor { Blue, Red, Green, Yellow }
@@ -10,6 +11,8 @@ public class PlayingCard : MonoBehaviour {
     private UnityEngine.U2D.Animation.SpriteResolver spriteResolver;
     private bool isFlipped = false;
     private bool isActivated = true;
+
+    public CardEffect effect;
     
     public CardType cardType;
     public CardColor cardColor;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4490969198171749254}
   - component: {fileID: 7314322009990389848}
   - component: {fileID: 2566745623898237065}
+  - component: {fileID: 4351743034798795767}
   - component: {fileID: 5946386397442503879}
   m_Layer: 0
   m_Name: PlayingCard
@@ -130,6 +131,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12, y: 18, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4351743034798795767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930932121745344496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ff7355392fb6440bf8cbae8185d671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectTarget: 0
 --- !u!114 &5946386397442503879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,5 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteResolver: {fileID: 4490969198171749254}
+  effect: {fileID: 4351743034798795767}
   cardType: 0
   cardColor: 0

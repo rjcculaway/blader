@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Command : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public int battleScore = 0;
+    private List<PlayingCard> playingCards;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class Command : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void receiveCards(List<PlayingCard> playingCards) {
+        this.playingCards = playingCards;
+        return;
     }
 }
