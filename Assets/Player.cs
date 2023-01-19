@@ -22,4 +22,12 @@ public class Player : MonoBehaviour
         this.playingCards = playingCards;
         return;
     }
+
+    public void GainBattleScore(int scoreGained) {
+        battleScore += scoreGained;
+    }
+
+    public void LoseBattleScore(int scoreLost) {
+        battleScore -= scoreLost;
+    }
 }

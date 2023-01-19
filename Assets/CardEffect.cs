@@ -1,35 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Commands;
-
-public class PlayerEffect : IPlayerCommand {
-    public void execute(Player player) {
-        return;
-    }
-
-    public void undo (Player player) {
-        return;
-    }
-}
-
 public enum EffectTarget {
-    Player,
+    Self,
     Enemy
 }
 
-public class CardEffect : MonoBehaviour
+public class CardEffect : MonoBehaviour, ICommand
 {
-    public EffectTarget effectTarget = EffectTarget.Player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public EffectTarget effectTarget = EffectTarget.Self;
+
+    virtual public void Execute(Player player) {
+        return;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    virtual public void Undo(Player player) {
+        return;
     }
 }

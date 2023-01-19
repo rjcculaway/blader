@@ -6,13 +6,15 @@ using Commands;
 public enum CardType { Diamond, Clubs, Spades, Hearts }
 public enum CardColor { Blue, Red, Green, Yellow }
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(UnityEngine.U2D.Animation.SpriteResolver))]
 public class PlayingCard : MonoBehaviour {
     [SerializeField]
     private UnityEngine.U2D.Animation.SpriteResolver spriteResolver;
     private bool isFlipped = false;
-    private bool isActivated = true;
 
-    public CardEffect effect;
+    [SerializeField]
+    public List<CardEffect> effects;
     
     public CardType cardType;
     public CardColor cardColor;
@@ -39,14 +41,6 @@ public class PlayingCard : MonoBehaviour {
     void Flip() {
         isFlipped = !isFlipped;
         UpdateDisplay();
-    }
-
-    void Deactivate() {
-        isActivated = false;
-    }
-
-    void Activate() {
-        isActivated = true;
     }
     
     void OnMouseDown() {
