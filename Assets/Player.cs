@@ -1,12 +1,19 @@
+using Commands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     public int battleScore = 0;
     private List<PlayingCard> playingCards;
-    // Start is called before the first frame update
+    private Transform[] cardSlots;
+
+    public UnityEvent<Player, PlayingCard> cardActivation;
+
+    private Stack<ICommand> playedCards;
+
     void Start()
     {
         
@@ -18,8 +25,9 @@ public class Player : MonoBehaviour
         
     }
 
-    void receiveCards(List<PlayingCard> playingCards) {
-        this.playingCards = playingCards;
+    public void ReceiveCard(PlayingCard card) {
+        playingCards.Add(card);
+        
         return;
     }
 
@@ -29,5 +37,14 @@ public class Player : MonoBehaviour
 
     public void LoseBattleScore(int scoreLost) {
         battleScore -= scoreLost;
+    }
+
+    public void AcceptCardEffect(ICommand cardEffect) {
+        cardEffect.Execute(this);
+        playedCards.Push(cardEffect);
+    }
+
+    public void ActivateCard(PlayingCard playingCard) {
+        cardActivation.Invoke(this, playingCard);
     }
 }

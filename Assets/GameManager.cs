@@ -1,35 +1,63 @@
-using System.Collections;
+using Commands;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    public static GameManager Instance {
-        get {
-            if (_instance == null) {
-                Debug.LogError("Game Manager does not exist");
-            }
-            return _instance;
-        }
-    }
-
+    [SerializeField]
+    private Card[] possibleCards;
     [SerializeField]
     private Player[] players;
-    private UnityEvent<Player, PlayingCard> cardActivation;
+    public uint deckSizePerPlayer = 16;
+    public GameObject playingCardPrefab;
 
     void Start() {
-        if (cardActivation == null) {
-            cardActivation = new UnityEvent<Player, PlayingCard>();
-        }
         // Cache players
         players = transform.gameObject.GetComponentsInChildren<Player>();
         Assert.IsTrue(players.Length > 0);
+        foreach (Player player in players) {
+            SubscribeToPlayer(player.cardActivation);
+        }
+        SetupGame();
     }
 
-    private void Awake() {
-        _instance = this;
+    void SetupGame() {
+        List<PlayingCard> mainDeck = GenerateDeck();
+        for (int i = 0; i < mainDeck.Count; i++) {
+            players[i % players.Length].ReceiveCard(mainDeck[i]);
+        }
+    }
+
+    List<PlayingCard> GenerateDeck() {
+        List<PlayingCard> deck = new List<PlayingCard>();
+        for (uint i = 0; i < deckSizePerPlayer * 2; i++) {
+            //deck.Add();
+        }
+        Mathf.FloorToInt(Random.Range(0, 3));
+        return deck;
+    }
+
+    void SubscribeToPlayer(UnityEvent<Player, PlayingCard> unityEvent) {
+        unityEvent.AddListener(OnCardActivation);
+    }
+
+    void OnCardActivation(Player source, PlayingCard playingCard) {
+        ApplyCard(source, playingCard);
+    }
+
+    void ApplyCard(Player source, PlayingCard playingCard) {
+        foreach (CardEffect cardEffect in playingCard.card.effects) {
+            foreach (Player player in players) {
+                if (cardEffect.effectTarget == EffectTarget.Enemy && player != source) {
+                    player.AcceptCardEffect(cardEffect);
+                }
+                if (cardEffect.effectTarget == EffectTarget.Self && player == source) {
+                    player.AcceptCardEffect(cardEffect);
+                }
+            }
+        }
     }
 }
