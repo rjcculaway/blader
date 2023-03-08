@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 0
   cardColor: 0
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 500317fe0179e134fb47e57ec88f2497, type: 2}

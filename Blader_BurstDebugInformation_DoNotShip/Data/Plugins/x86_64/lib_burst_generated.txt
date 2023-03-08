@@ -1,12 +1,12 @@
 Library: D:\Personal Projects\Blader\Blader\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-14
---target=X64_SSE2
+--target=AVX2
 --global-safety-checks-setting=Off
 --meta-data-generation=False
 --dump=Function
 --float-precision=Standard
---compilation-defines=UNITY_2021_3_16
+--compilation-defines=UNITY_2021_3_17
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER
@@ -154,12 +154,12 @@ Library: D:\Personal Projects\Blader\Blader\Temp\StagingArea\Data\Plugins\x86_64
 --method=Unity.Burst.Intrinsics.X86, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::DoGetCSRTrampoline()--89425a97f3f500fa810ad03f0c382542
 --platform=Windows
 --backend=burst-llvm-14
---target=AVX2
+--target=X64_SSE2
 --global-safety-checks-setting=Off
 --meta-data-generation=False
 --dump=Function
 --float-precision=Standard
---compilation-defines=UNITY_2021_3_16
+--compilation-defines=UNITY_2021_3_17
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER

@@ -7,8 +7,11 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     public int battleScore = 0;
-    private List<PlayingCard> playingCards;
+    private List<Card> playingCards = new List<Card>();
+    [SerializeField]
     private Transform[] cardSlots;
+    [SerializeField]
+    private GameObject cardsParent;
 
     public UnityEvent<Player, PlayingCard> cardActivation;
 
@@ -25,7 +28,13 @@ public class Player : MonoBehaviour
         
     }
 
-    public void ReceiveCard(PlayingCard card) {
+    public void ReceivePlayingCard(GameObject playingCard, int slot) {
+        playingCard.transform.SetPositionAndRotation(cardSlots[slot].position, cardSlots[slot].rotation);
+        playingCard.transform.parent = cardsParent.transform;
+        playingCard.SetActive(true);
+    }
+
+    public void ReceiveCard(Card card) {
         playingCards.Add(card);
         
         return;
@@ -46,5 +55,9 @@ public class Player : MonoBehaviour
 
     public void ActivateCard(PlayingCard playingCard) {
         cardActivation.Invoke(this, playingCard);
+    }
+
+    public void SetupTurn() {
+
     }
 }

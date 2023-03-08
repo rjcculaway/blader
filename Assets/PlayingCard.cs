@@ -15,7 +15,7 @@ public class PlayingCard : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        spriteResolver.SetCategoryAndLabel("FrontCard", card.cardType.ToString());
+        spriteResolver.SetCategoryAndLabel("BackCard", CardColor.Blue.ToString());
     }
 
     // Update is called once per frame
