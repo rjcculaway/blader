@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Player[] players;
     public uint deckSizePerPlayer = 16;
-    public GameObject playingCardPrefab;
 
     void Start() {
         SetupGame();
@@ -17,21 +16,18 @@ public class GameManager : MonoBehaviour
 
     void SetupGame() {
         List<Card> mainDeck = GenerateDeck();
+        // Split the deck for each player.
         for (int i = 0; i < mainDeck.Count; i++) {
             players[i % players.Length].ReceiveCard(mainDeck[i]);
-        }
-        // Fabricate PlayingCard game objects for each player
-        foreach (Player player in players) {
-            for (int i = 0; i < 10; i++) {
-                player.ReceivePlayingCard(Instantiate(playingCardPrefab), i);
-            }
         }
     }
 
     List<Card> GenerateDeck() {
         List<Card> deck = new List<Card>();
+        // Randomly select from the possible cards.
         for (uint i = 0; i < deckSizePerPlayer * 2; i++) {
-            deck.Add(possibleCards[Mathf.FloorToInt(Random.value * (possibleCards.Length - 1))]);
+            int ind = Mathf.RoundToInt(Random.value * (possibleCards.Length - 1));
+            deck.Add(possibleCards[ind]);
         }
         return deck;
     }

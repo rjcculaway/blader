@@ -8,14 +8,31 @@ using Commands;
 public class PlayingCard : MonoBehaviour {
     [SerializeField]
     private UnityEngine.U2D.Animation.SpriteResolver spriteResolver;
-    private bool isFlipped = false;
+    private bool m_isFlipped = true;
+    private bool isFlipped {
+        get { return m_isFlipped; }
+        set {
+            if (m_isFlipped == value) return;
+            m_isFlipped = value;
+            UpdateDisplay();
+        }
+    }
 
     [SerializeField]
-    public Card card;
+    private Card m_Card;
+    public Card card {
+        get { return m_Card; }
+        set {
+            if (m_Card == value) return;
+            m_Card = value;
+            UpdateDisplay();
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start() {
-        spriteResolver.SetCategoryAndLabel("BackCard", CardColor.Blue.ToString());
+
     }
 
     // Update is called once per frame
@@ -34,9 +51,19 @@ public class PlayingCard : MonoBehaviour {
 
     void Flip() {
         isFlipped = !isFlipped;
-        UpdateDisplay();
     }
-    
+
+    // Initially, a PlayingCard does not have card-specific information in it.
+    // This method applies a Card onto it, making it real.
+    public void RealizePlayingCard(Card card) {
+        if (this.card == null) {
+            this.card = card;
+            isFlipped = false;
+            gameObject.SetActive(true);
+            return;
+        }
+    }
+
     void OnMouseDown() {
         Flip();
     }

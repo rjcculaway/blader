@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f802464a3f55d0541b9d8506ac723c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleScore: 0
+  playingCardPrefab: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
   cardSlots:
   - {fileID: 1651374814}
   - {fileID: 351529502}
@@ -743,6 +743,7 @@ MonoBehaviour:
   - {fileID: 608746665}
   - {fileID: 566016279}
   cardsParent: {fileID: 1945785872}
+  battleScore: 0
   cardActivation:
     m_PersistentCalls:
       m_Calls:
@@ -938,7 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f802464a3f55d0541b9d8506ac723c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleScore: 0
+  playingCardPrefab: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
   cardSlots:
   - {fileID: 266757917}
   - {fileID: 875964650}
@@ -951,6 +952,7 @@ MonoBehaviour:
   - {fileID: 335404444}
   - {fileID: 1532937564}
   cardsParent: {fileID: 583910017}
+  battleScore: 0
   cardActivation:
     m_PersistentCalls:
       m_Calls:
@@ -1058,12 +1060,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleCards:
+  - {fileID: 11400000, guid: 9301fbb2ec82f9049b1fba3bbb3731cc, type: 2}
   - {fileID: 11400000, guid: 3e9c6413acd865840b257fd0ccc0fe56, type: 2}
+  - {fileID: 11400000, guid: 1fd4eb5cfc58bb14fa6ef0a497d5a762, type: 2}
+  - {fileID: 11400000, guid: 99e2cc34e96570a4a92944267936a66e, type: 2}
   players:
   - {fileID: 614250373}
   - {fileID: 1010057106}
   deckSizePerPlayer: 16
-  playingCardPrefab: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
 --- !u!4 &1471112612
 Transform:
   m_ObjectHideFlags: 0
