@@ -17,7 +17,10 @@ public class Hand : MonoBehaviour
         RaycastHit info;
         bool raycastResult = Physics.Raycast(ray, out info);
         if (info.collider != null) {
-            Debug.DrawRay(Vector3.one, ray.direction, Color.green, 0.5f);
-        }  
+            Debug.DrawRay(ray.origin, ray.direction * 10, Color.red, Time.deltaTime);
+        }
+        
+
+
     }
 }

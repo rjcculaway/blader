@@ -17,6 +17,7 @@ public class PlayingCard : MonoBehaviour {
             UpdateDisplay();
         }
     }
+    private Player owner;
 
     [SerializeField]
     private Card m_Card;
@@ -64,7 +65,12 @@ public class PlayingCard : MonoBehaviour {
         }
     }
 
+    public void OwnPlayingCard(Player player) {
+        this.owner = player;
+    }
+
     void OnMouseDown() {
         Flip();
+        owner.ActivateCard(this);
     }
 }

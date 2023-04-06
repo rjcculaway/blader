@@ -17,9 +17,18 @@ public class Player : MonoBehaviour
 
     private List<GameObject> cardObjects = new List<GameObject>();
 
-    public int battleScore = 0;
+    private int m_battleScore = 0;
+    public int battleScore {
+        get { return m_battleScore; }
+        set { 
+            m_battleScore = value;
+            battleScoreChanged.Invoke(battleScore);
+            Debug.Log($"Your new battle score is {battleScore}");
+        }
+    }
 
-
+    [SerializeField]
+    private UnityEvent<int> battleScoreChanged;
     public UnityEvent<Player, PlayingCard> cardActivation;
 
     private Stack<Card> playerDeck = new Stack<Card>();
@@ -31,6 +40,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < MAX_CARDS; i++) {
             GameObject cardObject = Instantiate(playingCardPrefab);
             PlayingCard playingCard = cardObject.GetComponent<PlayingCard>();
+            playingCard.OwnPlayingCard(this);
             playingCards.Add(playingCard);
             cardObject.transform.SetPositionAndRotation(cardSlots[i].position, cardSlots[i].rotation);
             cardObject.transform.parent = cardsParent.transform;

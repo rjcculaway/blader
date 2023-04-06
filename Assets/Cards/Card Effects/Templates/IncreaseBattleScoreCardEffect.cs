@@ -8,11 +8,11 @@ public class IncreaseBattleScoreCardEffect : CardEffect
     [SerializeField]
     private int scoreGain;
     public override void Execute(Player player) {
-        player.battleScore += scoreGain;
+        player.GainBattleScore(scoreGain);
     }
 
     public override void Undo(Player player) {
-        player.battleScore -= scoreGain;
+        player.LoseBattleScore(scoreGain);
     }
 
 }
