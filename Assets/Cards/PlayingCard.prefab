@@ -65,6 +65,7 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 1.13532115e-13
+  m_SpriteHash: 704620239
 --- !u!212 &7314322009990389848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,9 +126,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8930932121745344496}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 12, y: 18, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8652306999643099520

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Commands;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(UnityEngine.U2D.Animation.SpriteResolver))]
@@ -14,10 +15,15 @@ public class PlayingCard : MonoBehaviour {
         set {
             if (m_isFlipped == value) return;
             m_isFlipped = value;
-            UpdateDisplay();
         }
     }
-    private Player owner;
+    private Player m_owner;
+    public Player owner {
+        get {
+            return m_owner;
+        }
+    }
+    public UnityEvent<PlayingCard> cardActivation;
 
     [SerializeField]
     private Card m_Card;
@@ -26,10 +32,12 @@ public class PlayingCard : MonoBehaviour {
         set {
             if (m_Card == value) return;
             m_Card = value;
-            UpdateDisplay();
         }
     }
 
+    private void Awake() {
+        cardActivation.AddListener(GameManager.Instance.OnCardActivation);
+    }
 
     // Start is called before the first frame update
     void Start() {
@@ -41,6 +49,8 @@ public class PlayingCard : MonoBehaviour {
 
     }
 
+
+
     void UpdateDisplay() {
         if (isFlipped) {
             spriteResolver.SetCategoryAndLabel("BackCard", card.cardColor.ToString());
@@ -50,27 +60,34 @@ public class PlayingCard : MonoBehaviour {
         }
     }
 
-    void Flip() {
+    void SetCardAndUpdateDisplay(Card card) {
+        this.card = card;
+        UpdateDisplay();
+    }
+
+    public void FlipAndUpdateDisplay() {
         isFlipped = !isFlipped;
+        UpdateDisplay();
     }
 
     // Initially, a PlayingCard does not have card-specific information in it.
     // This method applies a Card onto it, making it real.
     public void RealizePlayingCard(Card card) {
         if (this.card == null) {
-            this.card = card;
+            SetCardAndUpdateDisplay(card);
             isFlipped = false;
+            UpdateDisplay();
             gameObject.SetActive(true);
+            
             return;
         }
     }
 
     public void OwnPlayingCard(Player player) {
-        this.owner = player;
+        m_owner = player;
     }
 
     void OnMouseDown() {
-        Flip();
-        owner.ActivateCard(this);
+        cardActivation.Invoke(this);
     }
 }

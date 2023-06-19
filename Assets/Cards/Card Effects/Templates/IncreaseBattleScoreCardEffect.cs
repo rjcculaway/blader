@@ -6,13 +6,19 @@ using UnityEngine;
 public class IncreaseBattleScoreCardEffect : CardEffect
 {
     [SerializeField]
-    private int scoreGain;
+    private int m_scoreGain;
+    public int scoreGain {
+        get {
+            return m_scoreGain;
+        }
+    }
+
     public override void Execute(Player player) {
-        player.GainBattleScore(scoreGain);
+        player.GainBattleScore(m_scoreGain);
     }
 
     public override void Undo(Player player) {
-        player.LoseBattleScore(scoreGain);
+        player.LoseBattleScore(m_scoreGain);
     }
 
 }

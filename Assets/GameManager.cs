@@ -4,12 +4,22 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private Card[] possibleCards;
-    [SerializeField]
-    private Player[] players;
-    public uint deckSizePerPlayer = 16;
+    public static GameManager Instance;
+    // Enumerate states
+    GameSetupGameManagerState gameSetupGameManagerState = new GameSetupGameManagerState();
+    PlayerTurnGameManagerState playerTurnGameManagerState = new PlayerTurnGameManagerState();
 
+    public Card[] possibleCards;
+    [SerializeField]
+    public Player[] players;
+    public int currentPlayerIndex;
+    public uint deckSizePerPlayer = 16;
+    private GameManagerBaseState currentState;
+
+    void Awake() {
+        Instance = this;
+        currentState = gameSetupGameManagerState;
+    }
     void Start() {
         SetupGame();
     }
@@ -20,6 +30,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < mainDeck.Count; i++) {
             players[i % players.Length].ReceiveCard(mainDeck[i]);
         }
+
+        //currentState.Enter(this);
+    }
+
+    private void Update() {
+        currentState.Update(this);
     }
 
     List<Card> GenerateDeck() {
@@ -32,8 +48,8 @@ public class GameManager : MonoBehaviour
         return deck;
     }
 
-    public void OnCardActivation(Player source, PlayingCard playingCard) {
-        ApplyCard(source, playingCard);
+    public void OnCardActivation(PlayingCard playingCard) {
+        currentState.OnCardActivation(playingCard);
     }
 
     void ApplyCard(Player source, PlayingCard playingCard) {

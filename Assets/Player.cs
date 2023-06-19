@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private UnityEvent<int> battleScoreChanged;
-    public UnityEvent<Player, PlayingCard> cardActivation;
 
     private Stack<Card> playerDeck = new Stack<Card>();
     private Stack<ICommand> playedCards = new Stack<ICommand>();
@@ -81,10 +80,14 @@ public class Player : MonoBehaviour
         playedCards.Push(cardEffect);
     }
 
-    public void ActivateCard(PlayingCard playingCard) {
-        cardActivation.Invoke(this, playingCard);
+    public Card PlayCardFromDeck() {
+        Card playingCardFromDeck;
+        if (playerDeck.TryPop(out playingCardFromDeck)) {
+            return playingCardFromDeck;
+        } else {
+            return null;
+        }
     }
-
     public void SetupTurn() {
 
     }
