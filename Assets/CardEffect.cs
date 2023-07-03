@@ -1,15 +1,10 @@
 using UnityEngine;
 using Commands;
-public enum EffectTarget {
-    Self,
-    Enemy
-}
+using System;
 
-public abstract class CardEffect : ScriptableObject, ICommand
+public abstract class CardEffect : ICommand
 {
-    public EffectTarget effectTarget = EffectTarget.Self;
+    public abstract void Execute();
 
-    public abstract void Execute(Player player);
-
-    public abstract void Undo(Player player);
+    public abstract void Undo();
 }

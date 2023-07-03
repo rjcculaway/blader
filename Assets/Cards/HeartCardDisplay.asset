@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 441a1c1c95a06634ca80d582c66d139e, type: 3}
-  m_Name: SpadeCard
+  m_Name: HeartCardDisplay
   m_EditorClassIdentifier: 
-  cardType: 2
+  cardType: 3
   cardColor: 0
   effects:
-  - {fileID: 11400000, guid: f7e00144648970f4f879bfb9d21d1a23, type: 2}
+  - {fileID: 11400000, guid: c482d2dd18c21c54fbe59a3ccc8d7ee1, type: 2}

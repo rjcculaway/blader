@@ -25,38 +25,18 @@ public class PlayingCard : MonoBehaviour {
     }
     public UnityEvent<PlayingCard> cardActivation;
 
-    [SerializeField]
-    private Card m_Card;
-    public Card card {
-        get { return m_Card; }
-        set {
-            if (m_Card == value) return;
-            m_Card = value;
-        }
-    }
+    public Card card;
 
     private void Awake() {
         cardActivation.AddListener(GameManager.Instance.OnCardActivation);
     }
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
-
-
-
     void UpdateDisplay() {
         if (isFlipped) {
-            spriteResolver.SetCategoryAndLabel("BackCard", card.cardColor.ToString());
+            spriteResolver.SetCategoryAndLabel("BackCard", card.cardDisplay.cardColor.ToString());
         }
         else {
-            spriteResolver.SetCategoryAndLabel("FrontCard", card.cardType.ToString());
+            spriteResolver.SetCategoryAndLabel("FrontCard", card.cardDisplay.cardType.ToString());
         }
     }
 
@@ -70,17 +50,14 @@ public class PlayingCard : MonoBehaviour {
         UpdateDisplay();
     }
 
-    // Initially, a PlayingCard does not have card-specific information in it.
-    // This method applies a Card onto it, making it real.
-    public void RealizePlayingCard(Card card) {
-        if (this.card == null) {
-            SetCardAndUpdateDisplay(card);
-            isFlipped = false;
-            UpdateDisplay();
-            gameObject.SetActive(true);
-            
-            return;
-        }
+    public void HideAndUpdateDisplay() {
+        isFlipped = true;
+        UpdateDisplay();
+    }
+
+    public void ShowAndUpdateDisplay() {
+        isFlipped = false;
+        UpdateDisplay();
     }
 
     public void OwnPlayingCard(Player player) {

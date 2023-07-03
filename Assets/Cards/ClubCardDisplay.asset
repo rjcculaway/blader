@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f824fa263014e1b4abad6db2102c955e, type: 3}
-  m_Name: IncreaseBy3
+  m_Script: {fileID: 11500000, guid: 441a1c1c95a06634ca80d582c66d139e, type: 3}
+  m_Name: ClubCardDisplay
   m_EditorClassIdentifier: 
-  effectTarget: 0
-  scoreGain: 3
+  cardType: 1
+  cardColor: 0
+  effects:
+  - {fileID: 11400000, guid: 5c05bafbf09e13b41ad8ad1a48d12254, type: 2}

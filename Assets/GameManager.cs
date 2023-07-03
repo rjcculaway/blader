@@ -6,14 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     // Enumerate states
-    GameSetupGameManagerState gameSetupGameManagerState = new GameSetupGameManagerState();
-    PlayerTurnGameManagerState playerTurnGameManagerState = new PlayerTurnGameManagerState();
+    public GameSetupGameManagerState gameSetupGameManagerState = new GameSetupGameManagerState();
+    public PlayerTurnGameManagerState playerTurnGameManagerState = new PlayerTurnGameManagerState();
 
-    public Card[] possibleCards;
-    [SerializeField]
-    public Player[] players;
+    public GameObject[] possibleCardPrefabs;
+    [SerializeField] public Player[] players;
     public int currentPlayerIndex;
-    public uint deckSizePerPlayer = 16;
+    public const uint deckSizePerPlayer = 16;
     private GameManagerBaseState currentState;
 
     void Awake() {
@@ -25,25 +24,34 @@ public class GameManager : MonoBehaviour
     }
 
     void SetupGame() {
-        List<Card> mainDeck = GenerateDeck();
+        List<GameObject> mainDeck = GenerateDeck();
         // Split the deck for each player.
         for (int i = 0; i < mainDeck.Count; i++) {
-            players[i % players.Length].ReceiveCard(mainDeck[i]);
+            GameObject cardObject = mainDeck[i];
+            cardObject.SetActive(false);
+            players[i % players.Length].ReceiveCard(cardObject);
         }
 
-        //currentState.Enter(this);
+        currentState.Enter(this);
     }
 
     private void Update() {
         currentState.Update(this);
     }
 
-    List<Card> GenerateDeck() {
-        List<Card> deck = new List<Card>();
+    public void SwitchState (GameManagerBaseState state) {
+        currentState = state;
+        currentState.Enter(this);
+    }
+
+    List<GameObject> GenerateDeck() {
+        List<GameObject> deck = new List<GameObject>();
         // Randomly select from the possible cards.
         for (uint i = 0; i < deckSizePerPlayer * 2; i++) {
-            int ind = Mathf.RoundToInt(Random.value * (possibleCards.Length - 1));
-            deck.Add(possibleCards[ind]);
+            int ind = Mathf.RoundToInt(Random.value * (possibleCardPrefabs.Length - 1));
+
+            deck.Add(Instantiate(possibleCardPrefabs[ind]));
+            Debug.Log(possibleCardPrefabs[ind]);
         }
         return deck;
     }
@@ -53,15 +61,8 @@ public class GameManager : MonoBehaviour
     }
 
     void ApplyCard(Player source, PlayingCard playingCard) {
-        foreach (CardEffect cardEffect in playingCard.card.effects) {
-            foreach (Player player in players) {
-                if (cardEffect.effectTarget == EffectTarget.Enemy && player != source) {
-                    player.AcceptCardEffect(cardEffect);
-                }
-                if (cardEffect.effectTarget == EffectTarget.Self && player == source) {
-                    player.AcceptCardEffect(cardEffect);
-                }
-            }
-        }
+        //foreach (CardEffect cardEffect in playingCard.card.effects) { 
+            
+        //}
     }
 }
