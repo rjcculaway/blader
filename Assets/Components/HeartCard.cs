@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiamondCard : Card {
+public class HeartCard : Card {
     public IncreaseBattleScoreCardEffectProperties properties;
 
     public void Awake() {

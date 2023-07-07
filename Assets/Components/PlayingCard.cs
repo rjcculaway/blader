@@ -23,12 +23,16 @@ public class PlayingCard : MonoBehaviour {
             return m_owner;
         }
     }
+    public UnityEvent<PlayingCard> cardClick;
     public UnityEvent<PlayingCard> cardActivation;
+    public UnityEvent<PlayingCard> cardDeactivation;
 
     public Card card;
 
     private void Awake() {
+        cardClick.AddListener(GameManager.Instance.OnCardClick);
         cardActivation.AddListener(GameManager.Instance.OnCardActivation);
+        cardDeactivation.AddListener(GameManager.Instance.OnCardDeactivation);
     }
 
     void UpdateDisplay() {
@@ -62,9 +66,10 @@ public class PlayingCard : MonoBehaviour {
 
     public void OwnPlayingCard(Player player) {
         m_owner = player;
+        card.OwnCard(player);
     }
 
     void OnMouseDown() {
-        cardActivation.Invoke(this);
+        cardClick.Invoke(this);
     }
 }

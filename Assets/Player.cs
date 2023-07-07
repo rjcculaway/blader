@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private UnityEvent<int> battleScoreChanged;
 
     private Stack<GameObject> playerDeck = new Stack<GameObject>();
-    private Stack<ICommand> playedCards = new Stack<ICommand>();
+    private Stack<PlayingCard> playedCards = new Stack<PlayingCard>();
 
     void Start()
     {
@@ -70,11 +70,6 @@ public class Player : MonoBehaviour
         battleScore -= scoreLost;
     }
 
-    public void AcceptCardEffect(ICommand cardEffect) {
-        cardEffect.Execute();
-        playedCards.Push(cardEffect);
-    }
-
     public GameObject PlayCardFromDeck() {
         GameObject playingCardFromDeck;
         if (playerDeck.TryPop(out playingCardFromDeck)) {
@@ -83,18 +78,35 @@ public class Player : MonoBehaviour
             return null;
         }
     }
+
+    public void PlayCard(PlayingCard card) {
+        card.gameObject.SetActive(false);
+        playingCards.Remove(card);
+        cardObjects.Remove(card.gameObject);
+        playedCards.Push(card);
+        card.cardActivation.Invoke(card);
+        return;
+    }
+
     public void SetupTurn() {
 
     }
     public void ShowCards() {
         for (int i = 0; i < playingCards.Count; i++) {
-            playingCards[i].HideAndUpdateDisplay();
+            playingCards[i].ShowAndUpdateDisplay();
         }
     }
 
     public void HideCards() {
         for (int i = 0; i < playingCards.Count; i++) {
             playingCards[i].HideAndUpdateDisplay();
+        }
+    }
+
+    public void ResetPlayedCards() {
+        PlayingCard currentPlayingCard;
+        while (playedCards.TryPop(out currentPlayingCard)) {
+            currentPlayingCard.cardDeactivation.Invoke(currentPlayingCard);
         }
     }
 }

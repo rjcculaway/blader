@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490969198171749254, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_labelHash
-      value: 6.135903e-21
+      value: 5.466933e-17
       objectReference: {fileID: 0}
     - target: {fileID: 4490969198171749254, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_SpriteHash
@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f23e8a97b76742a4191955a276006648, type: 3}
+    - target: {fileID: 8652306999643099520, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 7689802407648338935}
     - target: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_Name
       value: ClubCard

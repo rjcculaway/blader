@@ -19,4 +19,22 @@ public class Card : MonoBehaviour
 
         return value;
     }
+
+    public void ActivateEffects(GameManager gameManager) {
+        foreach (CardEffect effect in effects) {
+            effect.Execute();
+        }
+    }
+
+    public void DeactivateEffects(GameManager gameManager) {
+        foreach (CardEffect effect in effects) {
+            effect.Undo();
+        }
+    }
+
+    public void OwnCard(Player source) {
+        foreach(CardEffect effect in effects) {
+            effect.source = source;
+        }
+    }
 }

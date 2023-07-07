@@ -52,8 +52,7 @@ MonoBehaviour:
   cardActivation:
     m_PersistentCalls:
       m_Calls: []
-  cardDisplay: {fileID: 0}
-  m_Card: {fileID: 0}
+  card: {fileID: 0}
 --- !u!114 &6088506824842559593
 MonoBehaviour:
   m_ObjectHideFlags: 0

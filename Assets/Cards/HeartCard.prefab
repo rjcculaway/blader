@@ -57,20 +57,24 @@ PrefabInstance:
       value: 6.135903e-21
       objectReference: {fileID: 0}
     - target: {fileID: 4490969198171749254, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
+      propertyPath: m_SpriteHash
+      value: 1007805488
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490969198171749254, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_CategoryHash
       value: 0.0000000057048153
       objectReference: {fileID: 0}
     - target: {fileID: 7314322009990389848, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 130edfb771f4e624fbf9b37f1099b4c6, type: 3}
+      objectReference: {fileID: 21300000, guid: 33199c49f1bca4a428e01f7817bcb700, type: 3}
     - target: {fileID: 8652306999643099520, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: 6748443180794157006}
+      objectReference: {fileID: -5674076847687554639}
     - target: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_Name
-      value: DiamondCard
+      value: HeartCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78,14 +82,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 6748443180794157006}
+      addedObject: {fileID: -5674076847687554639}
   m_SourcePrefab: {fileID: 100100000, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
 --- !u!1 &8180079523920110154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
   m_PrefabInstance: {fileID: 753351896209925562}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6748443180794157006
+--- !u!114 &-5674076847687554639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +98,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180079523920110154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58df4f1fdfb17a64cb66fa0f33373889, type: 3}
+  m_Script: {fileID: 11500000, guid: 0128680bd6eb4c44ab23f57bef8d44e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDisplay: {fileID: 11400000, guid: 3e9c6413acd865840b257fd0ccc0fe56, type: 2}
-  properties: {fileID: 11400000, guid: 5e8dd6a80f44cef4194dbe2b17b665a8, type: 2}
+  cardDisplay: {fileID: 11400000, guid: 1fd4eb5cfc58bb14fa6ef0a497d5a762, type: 2}
+  properties: {fileID: 11400000, guid: 6192918385c124946a36c9501819945e, type: 2}

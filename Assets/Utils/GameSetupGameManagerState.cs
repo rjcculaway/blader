@@ -13,6 +13,14 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
 
     public override void Enter(GameManager gameManager) {
         Player[] players = gameManager.players;
+
+        // Reset each player's battle score and stack
+        foreach (Player player in players) {
+            player.battleScore = 0;
+            player.battleScore = 0;
+            player.ResetPlayedCards();
+        }
+        
         while (true) {
             // Determine first player by letting each player draw from the deck.
             GameObject playerACardObject = players[0].PlayCardFromDeck();
@@ -25,7 +33,7 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
                 // Draw
                 // @TODO Transitition to game over state (Draw)
                 Debug.Log("Neither player has any cards.");
-                //throw new NotImplementedException();
+                gameManager.SwitchState(gameManager.gameOverGameManagerState);
                 break;
             }
 
@@ -33,8 +41,10 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
             if (playerACard == null) {
                 // @TODO Player B is the winner
                 // @TODO Transition to game over state
-                //throw new NotImplementedException();
+                
                 Debug.Log("Player A no longer has any cards.");
+                gameManager.winningPlayer = players[1];
+                gameManager.SwitchState(gameManager.gameOverGameManagerState);
                 break;
             }
 
@@ -42,8 +52,10 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
             if (playerBCard == null) {
                 // @TODO Player A is the winner
                 // @TODO Transition to game over state
-                //throw new NotImplementedException();
+                
                 Debug.Log("Player B no longer has any cards.");
+                gameManager.winningPlayer = players[0];
+                gameManager.SwitchState(gameManager.gameOverGameManagerState);
                 break;
             }
 
@@ -74,8 +86,16 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
         }
     }
 
-    public override void OnCardActivation(PlayingCard card) {
-        throw new NotImplementedException();
+    public override void OnCardClick(GameManager gameManager, PlayingCard card) {
+        return;
+    }
+
+    public override void OnCardActivation(GameManager gameManager, PlayingCard playingCard) {
+        return;
+    }
+
+    public override void OnCardDeactivation(GameManager gameManager, PlayingCard card) {
+        return;
     }
 
     public override void Update(GameManager gameManager) {
