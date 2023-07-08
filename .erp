@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <ERPSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <showSceneName>true</showSceneName>
-  <showProjectName>true</showProjectName>
+  <showSceneName>false</showSceneName>
+  <showProjectName>false</showProjectName>
   <resetOnSceneChange>false</resetOnSceneChange>
   <debugMode>false</debugMode>
   <EditorClosed>true</EditorClosed>
-  <LastTimestamp>1688757176</LastTimestamp>
-  <LastSessionID>5922916569386938185</LastSessionID>
+  <LastTimestamp>1688811357</LastTimestamp>
+  <LastSessionID>4971214551516587776</LastSessionID>
   <Errored>false</Errored>
 </ERPSettings>

@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDisplay: {fileID: 11400000, guid: 3e9c6413acd865840b257fd0ccc0fe56, type: 2}
-  properties: {fileID: 11400000, guid: 5e8dd6a80f44cef4194dbe2b17b665a8, type: 2}
+  properties: {fileID: 11400000, guid: d40d06ef69d5d8a4aa03829a9415c533, type: 2}

@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490969198171749254, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_labelHash
-      value: 6.135903e-21
+      value: 6.922049e-26
       objectReference: {fileID: 0}
     - target: {fileID: 4490969198171749254, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_SpriteHash
@@ -71,10 +71,10 @@ PrefabInstance:
     - target: {fileID: 8652306999643099520, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: -5674076847687554639}
+      objectReference: {fileID: -7877214113250621727}
     - target: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       propertyPath: m_Name
-      value: HeartCard
+      value: SpadeCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -82,14 +82,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
       insertIndex: 2
-      addedObject: {fileID: -5674076847687554639}
+      addedObject: {fileID: -7877214113250621727}
   m_SourcePrefab: {fileID: 100100000, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
 --- !u!1 &8180079523920110154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8930932121745344496, guid: 5e1baf6f525d0ec4c8f977e1741b54fa, type: 3}
   m_PrefabInstance: {fileID: 753351896209925562}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-5674076847687554639
+--- !u!114 &-7877214113250621727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180079523920110154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0128680bd6eb4c44ab23f57bef8d44e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 27601951f807fb247a95a4835ffa1a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDisplay: {fileID: 11400000, guid: 1fd4eb5cfc58bb14fa6ef0a497d5a762, type: 2}
-  properties: {fileID: 11400000, guid: 7e3513214959bf544a348185177e58a8, type: 2}
+  cardDisplay: {fileID: 11400000, guid: 99e2cc34e96570a4a92944267936a66e, type: 2}
+  properties: {fileID: 11400000, guid: 6192918385c124946a36c9501819945e, type: 2}

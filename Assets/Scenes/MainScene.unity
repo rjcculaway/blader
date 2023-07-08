@@ -1118,6 +1118,7 @@ MonoBehaviour:
   - {fileID: 5293688845474342673, guid: b5dd3a3c930a535469bd131464eb6135, type: 3}
   - {fileID: 8180079523920110154, guid: 9a779a72500aaa543839de4b346d5370, type: 3}
   - {fileID: 8180079523920110154, guid: 9bec96f2dad5c65409a76c21c638658b, type: 3}
+  - {fileID: 8180079523920110154, guid: e31b043780bc4904ba84a3e8b3a5bf2a, type: 3}
   gameOverUiPrefab: {fileID: 4470071988863274053, guid: 9e69ff9b89554014288aa8adeca39808, type: 3}
   players:
   - {fileID: 614250373}

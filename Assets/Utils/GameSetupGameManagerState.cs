@@ -13,15 +13,15 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
 
     public override void Enter(GameManager gameManager) {
         Player[] players = gameManager.players;
-
-        // Reset each player's battle score and stack
-        foreach (Player player in players) {
-            player.battleScore = 0;
-            player.battleScore = 0;
-            player.ResetPlayedCards();
-        }
         
         while (true) {
+            // Reset each player's battle score and stack
+            foreach (Player player in players) {
+                player.battleScore = 0;
+                player.battleScore = 0;
+                player.ResetPlayedCards();
+            }
+
             // Determine first player by letting each player draw from the deck.
             GameObject playerACardObject = players[0].PlayCardFromDeck();
             GameObject playerBCardObject = players[1].PlayCardFromDeck();
@@ -33,6 +33,7 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
                 // Draw
                 // @TODO Transitition to game over state (Draw)
                 Debug.Log("Neither player has any cards.");
+                gameManager.winningPlayer = null;
                 gameManager.SwitchState(gameManager.gameOverGameManagerState);
                 break;
             }
@@ -64,16 +65,19 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
             int playerBCardValue = playerBCard.GetValue();
             Debug.AssertFormat(playerACardValue > 0 && playerBCardValue > 0, "Player A or Player B's card value is expected to be greater than 0.");
             Debug.LogFormat("Getting from deck!({0} vs. {1})", playerACardValue, playerBCardValue);
+
+            players[0].battleScore = playerACardValue;
+            players[1].battleScore = playerBCardValue;
             // Begin game
             // @TODO Transition to PlayerTurn state
-            if (playerACardValue > playerBCardValue) {
+            if (playerACardValue < playerBCardValue) {
                 Debug.Log("Player A is first!");
                 gameManager.currentPlayerIndex = 0;
                 gameManager.SwitchState(gameManager.playerTurnGameManagerState);
                 break;
             }
 
-            if (playerACardValue < playerBCardValue) {
+            if (playerACardValue > playerBCardValue) {
                 Debug.Log("Player B is first!");
                 gameManager.currentPlayerIndex = 1;
                 gameManager.SwitchState(gameManager.playerTurnGameManagerState);

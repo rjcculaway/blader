@@ -9,12 +9,19 @@ public class Card : MonoBehaviour
 
     public int GetValue() {
         int value = 0;
+        bool foundIncreaseEffect = false;
 
         foreach (CardEffect effect in effects) {
             var increaseEffect = effect as IncreaseBattleScoreCardEffect;
             if (increaseEffect != null) {
+                foundIncreaseEffect = true;
                 value += increaseEffect.properties.scoreGain;
             }
+        }
+
+        // If the card has no IncreaseBattleScoreCardEffect, the value of the card is 1.
+        if (!foundIncreaseEffect) {
+            value = 1;
         }
 
         return value;

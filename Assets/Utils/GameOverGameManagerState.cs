@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameOverGameManagerState : GameManagerBaseState
 {
     public override void Enter(GameManager gameManager) {
+        foreach (Player player in gameManager.players) {
+            player.ShowCards();
+        }
         gameManager.InstantiateGameOverScreen();
         return;
     }

@@ -54,12 +54,26 @@ public class Player : MonoBehaviour
             Debug.Log("Card moved to player deck.");
         } else {
             cardObject.transform.SetPositionAndRotation(cardSlots[cardObjects.Count].position, cardSlots[cardObjects.Count].rotation);
-            cardObject.transform.parent = cardsParent.transform;
+            cardObject.transform.parent = cardSlots[cardObjects.Count].transform;
             cardObject.SetActive(true);
             cardObjects.Add(cardObject);
         }
+    }
 
-
+    public void DrawCardFromDeck() {
+        GameObject drawnCard;
+        if (playerDeck.TryPop(out drawnCard)) {
+            Debug.Log($"Player {gameObject?.name} has drawn the card {drawnCard?.name}");
+            foreach (Transform slot in cardSlots) {
+                Debug.Log(slot.transform.childCount);
+                if (slot.transform.childCount < 1) {
+                    drawnCard.transform.SetPositionAndRotation(slot.position, slot.rotation);
+                    drawnCard.transform.parent = slot.transform;
+                    drawnCard.SetActive(true);
+                    cardObjects.Add(drawnCard);
+                }
+            }
+        }
     }
 
     public void GainBattleScore(int scoreGained) {
@@ -81,10 +95,14 @@ public class Player : MonoBehaviour
 
     public void PlayCard(PlayingCard card) {
         card.gameObject.SetActive(false);
+        card.gameObject.transform.SetParent(null);
         playingCards.Remove(card);
         cardObjects.Remove(card.gameObject);
         playedCards.Push(card);
         card.cardActivation.Invoke(card);
+
+        DrawCardFromDeck();
+
         return;
     }
 

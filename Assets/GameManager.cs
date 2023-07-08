@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public void SwitchState (GameManagerBaseState state) {
         currentState = state;
         currentState.Enter(this);
+        Debug.Log($"New game state: {currentState.GetType()}");
     }
 
     List<GameObject> GenerateDeck() {
@@ -97,6 +98,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void InstantiateGameOverScreen() {
-        Instantiate(gameOverUiPrefab, gameObject.transform.parent);
+        GameObject gameOverUi = Instantiate(gameOverUiPrefab, gameObject.transform.parent);
+        gameOverUi.SetActive(false);
+        gameOverUi.GetComponent<GameOverDisplayWinnerText>().SetWinnerText(winningPlayer?.gameObject?.name);
+        gameOverUi.SetActive(true);
     }
 }
