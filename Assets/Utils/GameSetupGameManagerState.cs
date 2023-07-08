@@ -23,8 +23,8 @@ public sealed class GameSetupGameManagerState : GameManagerBaseState
             }
 
             // Determine first player by letting each player draw from the deck.
-            GameObject playerACardObject = players[0].PlayCardFromDeck();
-            GameObject playerBCardObject = players[1].PlayCardFromDeck();
+            GameObject playerACardObject = players[0].DrawCardFromDeck();
+            GameObject playerBCardObject = players[1].DrawCardFromDeck();
             Card playerACard = playerACardObject?.GetComponent<Card>();
             Card playerBCard = playerBCardObject?.GetComponent<Card>();
 
